@@ -21,6 +21,9 @@ function(shape, rate){
   yc <- d*v
   y <- yc
   y[accept!=1] <- NA
+  ##browser()
+  ##y <- ifelse(accept==1, yc, NA)
   y <- y/rate
+  ##y <- ifelse(y>lam, y, NA)
   y
 }

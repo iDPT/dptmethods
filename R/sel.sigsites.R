@@ -30,6 +30,7 @@ function(flat.test.report,
   ##     *1*        0        0        0   36719
   ##     1**        0        0        0   36947
 
+  ##browser()
   method <- match.arg(method)
   
   idx.patt <- flat.test.report$pattern %in% pattern

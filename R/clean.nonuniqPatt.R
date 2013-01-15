@@ -1,5 +1,6 @@
 clean.nonuniqPatt <-
 function(sitelist) {
+  ##browser()
   l.n <- length(sitelist)
   idx <- common.expandIdx(l.n, l.n, self.included=F)
   l.nms <- names(sitelist)

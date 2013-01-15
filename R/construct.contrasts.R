@@ -1,6 +1,7 @@
 #'  @export
 construct.contrasts <-
 function(patts) {
+  ##browser()
   patt.ncol <- ncol(as.matrix(patts))
   patt.sum <- colSums(patts)
   out <- vector("list", patt.ncol)

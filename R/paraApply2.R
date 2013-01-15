@@ -1,7 +1,8 @@
 paraApply2 <-
 function(x, margin, fun, ..., tmp.dir=".tmp",ncore=NULL) {
-  ## Parallel version with ncore blocks on the input matrix x
+  ## Parallel version apply with ncore blocks on the input matrix x
   ## Higher throughput with shared data file
+  ##browser()
   if(is.null(ncore)) ncore <- sfCpus()
   if(is.null(tmp.dir)) tmp.dir <- get.ws.path("tmp")
   tmp <- tempfile(tmpdir=tmp.dir)
@@ -12,6 +13,7 @@ function(x, margin, fun, ..., tmp.dir=".tmp",ncore=NULL) {
   save(x, margin, xdim, ncore, fun.text, .cut, file=tmp)
  
   .worker <- function(y,load.file,...) {
+    ##browser()
     load(load.file)
     fun <- eval(parse(text=fun.text))
     .len <- sum(.cut==levels(.cut)[y])
