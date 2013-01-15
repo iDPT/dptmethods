@@ -1,8 +1,9 @@
 #' @export
 map.region <-
 function(test.report, gap) {
-  ### test.report has chr, start, and end columns
-  ### gap is the max gap that will get joined, so the minimum gap after joining will be gap+1
+  ##browser()
+### test.report has chr, start, and end columns
+### gap is the max gap that will get joined, so the minimum gap after joining will be gap+1
   names(test.report) <- replace.names(names(test.report), "chr", "space")
   .rd <- as(test.report, "RangedData")
   .rl <- ranges(.rd)

@@ -4,9 +4,11 @@ function(wins, psig, vars, group.label, rep.label,
                             contr= cbind(c(0,1,1),c(0,1,-1)),
                             src.file="")
 {
+  ##browser()
   unique.wins <- unique(wins$ID)
   n.wins <- length(unique.wins)
   test.effect.worker <- function(i) {
+    ##browser()
     ## 31775 is one with NULL output
     ### Debug code
     ## if(i%%10 ==0) cat("** ")
@@ -49,6 +51,7 @@ function(wins, psig, vars, group.label, rep.label,
       varFix.updated <- R00R00%*%sigmaSq.updated
       
       stdErr.updated <- sqrt(diag(varFix.updated))
+      ## browser()
       this.tTable <-  summary(lme.pmean.sub.wt)$tTable
       this.tTable[,"Std.Error"] <- stdErr.updated
       this.tTable[,"t-value"] <- this.tTable[,"Value"]/stdErr.updated
@@ -106,6 +109,7 @@ function(wins, psig, vars, group.label, rep.label,
     if(!is.null(res.ncols)) break
   }
 
+  ##browser()
   res <- as.data.frame(matrix(unlist(res.list), ncol=res.ncols, byrow=T))
   names(res) <- res.names
   

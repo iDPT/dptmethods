@@ -4,8 +4,26 @@
 ## Notes: setup iDPT workspace and iDPT workflow
 ## =============================================================================
 .dptworkflow <- expression({
+  .First <- function(){
+    vflag <- F
+    require(MCMCpack,quietly=vflag)
+    require(snowfall,quietly=vflag)
+    require(nlme,quietly=vflag)
+    require(gmodels,quietly=vflag)
+    require(MASS,quietly=vflag)
+    require(plyr,quietly=vflag)
+    require(preprocessCore,quietly=vflag)
+    require(methods,quietly=vflag)
+    require(inline,quietly=vflag)
+    require(Rcpp,quietly=vflag)
+    require(IRanges,quietly=vflag)
+    require(Biostrings,quietly=vflag)
+    require(mmap,quietly=vflag)
+    require(qvalue, quietly=vflag)
+  }
+  .dump <- .First()
   
-  dptws.initexpr <- expression({load(".RData")})#; .First()})
+  dptws.initexpr <- expression({load(".RData"); .First()})
   dpt.options <- list(
                       ws = list(
                         ws.root = opt$ws.root,
@@ -35,34 +53,34 @@
   if(opt$verbose>0) print(dpt.options)
 ## logs with files named after tasks in output
                     
-#get.src <- function(string, base, ws.options){
-#
-#  if(!missing(base)) {
-#    source(file.path(base, string), echo=F)
-#  } else {
-#    if(file.exists(file.path(ws.options$src.path,
-#                             string))){
-#      source(file.path(ws.options$src.path,
-#                       string),
-#             echo=F)
-#    } else if(file.exists(file.path(ws.options$ws.root,
-#                                    ws.options$src.path,
-#                                    string))) {
-#      source(file.path(ws.options$ws.root,
-#                       ws.options$src.path,
-#                       string), echo=F)
-#    } else {stop("Can't allocate the DPT file")}
-#  }
-#}
+## get.src <- function(string, base, ws.options){
+
+##  if(!missing(base)) {
+##    source(file.path(base, string), echo=F)
+##  } else {
+##    if(file.exists(file.path(ws.options$src.path,
+##                             string))){
+##      source(file.path(ws.options$src.path,
+##                       string),
+##             echo=F)
+##    } else if(file.exists(file.path(ws.options$ws.root,
+##                                    ws.options$src.path,
+##                                    string))) {
+##      source(file.path(ws.options$ws.root,
+##                       ws.options$src.path,
+##                       string), echo=F)
+##    } else {stop("Can't allocate the DPT file")}
+##  }
+## }
 
 
-###... Load experiment configuration file
-#get.src(string="dpt.methods.R",
-#        base=file.path("http://dl.dropbox.com/u/10421230",
-#          "dpt",
-#          dpt.version),
-#        ws.options=dpt.options[['ws']]
-#        )  ## to be replaced by R package dptmethods
+## #... Load experiment configuration file
+## get.src(string="dpt.methods.R",
+##        base=file.path("http://dl.dropbox.com/u/10421230",
+##          "dpt",
+##          dpt.version),
+##        ws.options=dpt.options[['ws']]
+##        )  ## to be replaced by R package dptmethods
 
   ###... Samples
   sample.sheet <- opt$samplesheet
@@ -133,6 +151,7 @@
       } else {
         init.filter.cutoff <- initfilter.cutoff
       }
+      
       get.reads.fromJoinedSamples(get.wsoption.path("joinSample"),
                                   chr,
                                   threshold=init.filter.cutoff,
