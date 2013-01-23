@@ -1,6 +1,8 @@
 extract.info.fromQuESTRegioOutput <-
 function(peakNames) {
+  ##browser()
   process.name <- function(aname) {
+    ##browser()
     nmfull <- unlist(strsplit(aname, split="~"))
     nmout.1 <- nmfull[c(1,2)]
     nmout.2 <- unlist(strsplit(nmfull[3], split="-"))

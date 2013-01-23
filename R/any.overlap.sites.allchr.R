@@ -1,11 +1,9 @@
 any.overlap.sites.allchr <-
-function(R1,
-         R2,
-         e=500, 
-         self=F,
-         chr.col="chr",
-         start.col="start",
-         end.col="end") {
+function(R1,R2,
+                                     e=500, self=F,
+                                     chr.col="chr",
+                                     start.col="start",
+                                     end.col="end") {
   chrs <- unique(R1[,chr.col])
   overlapped.R1.sites <- NULL
   for (chr.i in chrs) {

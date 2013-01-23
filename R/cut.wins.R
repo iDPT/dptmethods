@@ -3,6 +3,7 @@ function(wins.df, h, cutoff.cat=3000, cutoff.last=2000)
 {
   wins <- wins.df$wins
   tst <- diff(wins)
+  ##browser()
 
   wins.cuts <- unique(c(0, wins[which(tst > h)], max(wins)+1))
   wins.cat <- cut(wins, wins.cuts, right=F)
@@ -39,6 +40,7 @@ function(wins.df, h, cutoff.cat=3000, cutoff.last=2000)
     wins.cat.2[as.numeric(wins.cat) %in% tb[id==i.ID,'Var1']] <- i.ID
   }
 
+  ##browser()
   id.unique <- unique(id)
   res <- vector('list', length=length(id.unique))
   names(res) <- id.unique

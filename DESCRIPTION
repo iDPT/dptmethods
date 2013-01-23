@@ -1,29 +1,12 @@
-Package: dptMethods
+Package: dptmethods
 Maintainer: Yaomin Xu <yaomin@gmail.com>
 Author: Yaomin Xu
 Version: 0.1
-Title: dptMethods
+Title: dptmethods
 Description: This is a package with all methods functions used for iDPT pipeline
-URL: http://github.com/dptMethods
+URL: http://github.com/dptmethods
 Depends:
     R (>= 2.11.0)
-Suggests:
-    testthat,
-    roxygen2,
-    MCMCpack,
-    snowfall,
-    nlme,
-    gmodels,
-    MASS,
-    plyr,
-    preprocessCore,
-    inline,
-    Rcpp,
-    IRanges,
-    Biostrings,
-    mmap,
-    qvalue,
-    methods
 Collate:
     'append.effectsign.R'
     'bf.filter.R'
@@ -119,8 +102,6 @@ Collate:
     'dpt.qvalues.R'
     'dpt.report.postprocess.R'
     'dpt.syshold.R'
-    'dptMethods-package.r'
-    'dptMethods2-internal.R'
     'e.res.BF.ecdf.R'
     'escore.comp.R'
     'est.NB.R'
